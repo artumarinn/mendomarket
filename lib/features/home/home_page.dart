@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mendomarket/features/home/home_search_bar.dart';
 import 'package:mendomarket/widgets/common/custom_app_bar.dart';
 import 'package:mendomarket/widgets/common/custom_nav_bar.dart';
 
@@ -33,6 +34,7 @@ class _HomePageState extends State<HomePage> {
         ),
       ],
       ),
+      body: const HomeSearchBar(),
       bottomNavigationBar: CustomNavBar(
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,

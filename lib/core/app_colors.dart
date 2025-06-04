@@ -9,6 +9,9 @@ class AppColors {
   // secondary colors
   static const inputBackground = Color(0xFFF7F1DC);
 
+  // TextFields colors
+  static const textFieldBackground = Color(0xFFF7F1DC);
+
   // background colors
   static const backgroundColor = Color(0xFFffffff);
 }
