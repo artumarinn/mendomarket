@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:mendomarket/core/app_colors.dart';
-import 'package:mendomarket/features/home/home_page.dart';
-import 'package:mendomarket/features/chat/chat_page.dart';
 
 class CustomNavBar extends StatefulWidget {
   final int currentIndex;
