@@ -21,12 +21,17 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: 'MendoMarket'),
-      body: Center(
-        child: Text(
-          'Welcome to MendoMarket!',
-          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+      appBar: CustomAppBar(
+      title: "MendoMarket",
+      actions: [
+        Padding(
+          padding: const EdgeInsets.only(right: 12),
+          child: IconButton(
+            icon: Icon(Icons.notifications, color: Colors.white),
+            onPressed: () {},
+          ),
         ),
+      ],
       ),
       bottomNavigationBar: CustomNavBar(
         currentIndex: _selectedIndex,
