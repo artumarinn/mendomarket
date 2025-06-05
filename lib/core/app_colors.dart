@@ -1,5 +1,7 @@
 import 'dart:ui';
 
+import 'package:flutter/foundation.dart';
+
 class AppColors {
 
   // primary colors 
@@ -14,4 +16,5 @@ class AppColors {
 
   // background colors
   static const backgroundColor = Color(0xFFffffff);
+
 }

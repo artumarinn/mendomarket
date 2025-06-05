@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mendomarket/features/home/home_banner.dart';
+import 'package:mendomarket/features/home/home_categories.dart';
 import 'package:mendomarket/features/home/home_search_bar.dart';
 import 'package:mendomarket/widgets/common/custom_app_bar.dart';
 import 'package:mendomarket/widgets/common/custom_nav_bar.dart';
@@ -23,18 +25,18 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
-      title: "MendoMarket",
-      actions: [
-        Padding(
-          padding: const EdgeInsets.only(right: 12),
-          child: IconButton(
-            icon: Icon(Icons.notifications, color: Colors.white),
-            onPressed: () {},
+        title: "MendoMarket",
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 12),
+            child: IconButton(
+              icon: const Icon(Icons.notifications, color: Colors.white), // Agregado 'const'
+              onPressed: () {},
+            ),
           ),
-        ),
-      ],
+        ],
       ),
-      body: const HomeSearchBar(),
+      body: const Column(children: [HomeSearchBar(), HomeBanner(), HomeCategories()]), // Agregado 'const'
       bottomNavigationBar: CustomNavBar(
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,

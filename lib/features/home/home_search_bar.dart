@@ -23,7 +23,7 @@ class HomeSearchBar extends StatelessWidget {
             hintText: "Buscar productos, locales . . .",
             prefixIcon: const Icon(Icons.search, color: Colors.black),
             filled: true,
-            fillColor: AppColors.textFieldBackground,
+            fillColor: const Color.fromARGB(68, 84, 131, 98),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(20),
               borderSide: BorderSide.none,

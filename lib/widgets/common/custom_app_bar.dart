@@ -3,13 +3,13 @@ import 'package:mendomarket/core/app_colors.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
-  final List<Widget>? actions; 
+  final List<Widget>? actions;
 
   const CustomAppBar({
-    Key? key,
+    super.key, // <-- ¡Aquí estaba la corrección principal! Se usa 'super.key' para simplificar.
     required this.title,
     this.actions,
-  }) : super(key: key);
+  });
 
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
@@ -24,14 +24,19 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         ),
       ),
       backgroundColor: AppColors.primaryColor,
-      title: Text(
-        title,
-        style: const TextStyle(
-          color: Colors.white,
-          fontWeight: FontWeight.bold,
+      title: Padding(
+        padding: const EdgeInsets.only(left: 12),
+        child: Text(
+          title,
+          style: const TextStyle(
+            color: Colors.white,
+            fontSize: 26,
+            fontWeight: FontWeight.bold,
+            fontFamily: 'Poppins', 
+          ),
         ),
       ),
-      actions: actions, 
+      actions: actions,
     );
   }
 }
