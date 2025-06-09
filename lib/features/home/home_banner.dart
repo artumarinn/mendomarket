@@ -19,17 +19,17 @@ class HomeBanner extends StatelessWidget {
         width: double.infinity,
         height: 120,
         child: Column(
-          children: [
-            Text(
-              "¡Nueva Feria!",
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 22,
-                fontWeight: FontWeight.bold,
-                fontFamily: 'Poppins',
-              ),
-            ),
-          ],
+          // children: [
+          //   Text(
+          //     "¡Nueva Feria!",
+          //     style: TextStyle(
+          //       color: Colors.white,
+          //       fontSize: 22,
+          //       fontWeight: FontWeight.bold,
+          //       fontFamily: 'Poppins',
+          //     ),
+          //   ),
+          // ],
         ),
       ),
     );

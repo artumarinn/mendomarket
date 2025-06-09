@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:mendomarket/features/home/home_search_bar.dart';
 import 'package:mendomarket/widgets/common/custom_app_bar.dart';
 import 'package:mendomarket/widgets/common/custom_nav_bar.dart';
-import 'package:mendomarket/features/home/home_search_bar.dart';
 
 class SearchPage extends StatefulWidget {
   const SearchPage({super.key});

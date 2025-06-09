@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mendomarket/core/app_colors.dart';
 
 class HomeSearchBar extends StatelessWidget {
   const HomeSearchBar({super.key});
