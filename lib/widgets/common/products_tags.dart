@@ -21,6 +21,9 @@ class _ProductsTagsState extends State<ProductsTags> {
         return ChoiceChip(
           label: Text(filters[index]),
           selected: isSelected,
+          showCheckmark: false,
+          padding: EdgeInsets.symmetric(horizontal: 10, vertical: 0),
+          visualDensity: VisualDensity.compact,
           selectedColor: const Color(0xFFE9C46A),
           backgroundColor: AppColors.inputBackground,
           labelStyle: TextStyle(
