@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mendomarket/core/app_colors.dart';
 
 class ProductsTags extends StatefulWidget {
-   const ProductsTags({super.key});
+  const ProductsTags({super.key});
 
   @override
   State<ProductsTags> createState() => _ProductsTagsState();
@@ -26,6 +26,16 @@ class _ProductsTagsState extends State<ProductsTags> {
           labelStyle: TextStyle(
             color: isSelected ? Colors.white : Colors.black87,
             fontWeight: FontWeight.bold,
+          ),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+            side: BorderSide(
+              color:
+                  isSelected
+                      ? AppColors.secondaryColor
+                      : AppColors.inputBackground,
+              width: 2.0, 
+            ),
           ),
           onSelected: (_) {
             setState(() {
