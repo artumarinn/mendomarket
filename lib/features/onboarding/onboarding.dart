@@ -36,6 +36,21 @@ class _OnboardingPageState extends State<OnboardingPage> {
       backgroundColor: Colors.white,
       body: Column(
         children: [
+          Padding(
+            padding: const EdgeInsets.only(top: 40, left: 250),
+            child: GestureDetector(
+              onTap: () {
+                Navigator.pushReplacementNamed(context, '/login');
+              },
+              child: Text(
+                "Omitir",
+                style: TextStyle(
+                  color: AppColors.primaryColor,
+                  decoration: TextDecoration.underline,
+                ),
+              ),
+            ),
+          ),
           Expanded(
             child: PageView.builder(
               controller: _pageController,
@@ -91,7 +106,6 @@ class _OnboardingPageState extends State<OnboardingPage> {
               ),
             ),
           ),
-
           // Botón
           Padding(
             padding: const EdgeInsets.only(bottom: 50),

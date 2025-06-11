@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mendomarket/features/chat/chat_page.dart';
 import 'package:mendomarket/features/favorite/favorite_page.dart';
+import 'package:mendomarket/features/login/login_page.dart';
 import 'package:mendomarket/features/onboarding/onboarding.dart';
 import 'package:mendomarket/features/profile/profile_page.dart';
 import 'package:mendomarket/features/search/search_page.dart';
@@ -25,6 +26,7 @@ class MyApp extends StatelessWidget {
         '/chat': (context) => ChatPage(),
         '/favorite': (context) => const FavoritePage(),
         '/profile': (context) => const ProfilePage(),
+        '/login': (context) => const LoginPage(),
       },
       theme: ThemeData(
         primarySwatch: Colors.green,
