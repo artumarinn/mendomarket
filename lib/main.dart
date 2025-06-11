@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mendomarket/features/chat/chat_page.dart';
 import 'package:mendomarket/features/favorite/favorite_page.dart';
+import 'package:mendomarket/features/onboarding/onboarding.dart';
 import 'package:mendomarket/features/profile/profile_page.dart';
 import 'package:mendomarket/features/search/search_page.dart';
 import 'features/home/home_page.dart';  
@@ -16,8 +17,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'MendoMarket',
-      initialRoute: '/home',
+      initialRoute: '/onboarding', 
       routes: {
+        '/onboarding': (context) => const OnboardingPage(),
         '/home': (context) => const HomePage(),
         '/search': (context) => const SearchPage(),
         '/chat': (context) => ChatPage(),
