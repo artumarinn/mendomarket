@@ -5,7 +5,6 @@ import 'package:mendomarket/features/home/home_products.dart';
 import 'package:mendomarket/features/home/home_search_bar.dart';
 import 'package:mendomarket/widgets/common/custom_app_bar.dart';
 import 'package:mendomarket/widgets/common/custom_nav_bar.dart';
-import 'package:mendomarket/widgets/common/product_card.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

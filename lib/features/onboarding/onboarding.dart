@@ -16,17 +16,17 @@ class _OnboardingPageState extends State<OnboardingPage> {
     {
       "title": "Descubrí productos locales únicos.",
       "description": "Conectate con emprendimientos de tu ciudad y apoyá sus productos",
-      "image": "assets/images/onboarding01.png",
+      "image": "assets/images/onboarding/onboarding01.png",
     },
     {
       "title": "Explorá categorías personalizadas",
       "description": "Encontrá desde impresiones 3D hasta calcomanías o productos personalizados",
-      "image": "assets/images/onboarding02.png",
+      "image": "assets/images/onboarding/onboarding02.png",
     },
     {
       "title": "Crecé y hacé crecer",
       "description": "Publicá tus servicios y ayudá a tu comunidad",
-      "image": "assets/images/onboarding03.png",
+      "image": "assets/images/onboarding/onboarding03.png",
     },
   ];
 

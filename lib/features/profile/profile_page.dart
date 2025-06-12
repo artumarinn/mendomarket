@@ -4,7 +4,7 @@ import 'package:mendomarket/widgets/common/custom_nav_bar.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
-  
+
   @override
   State<ProfilePage> createState() => _ProfilePageState();
 }
@@ -21,8 +21,17 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(
-        title: 'Perfil',
+      appBar: CustomAppBar(title: 'Perfil'),
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.only(top: 500),
+          child: GestureDetector(
+            onTap: () {
+                  Navigator.pushReplacementNamed(context, '/onboarding');
+                },
+            child: Text("Cerrar Sesion", style: TextStyle(color: Colors.red, fontSize: 18)),
+          ),
+        ),
       ),
       bottomNavigationBar: CustomNavBar(
         currentIndex: _selectedIndex,
