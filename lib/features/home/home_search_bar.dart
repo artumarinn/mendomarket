@@ -1,55 +1,56 @@
+// lib/features/home/home_search_bar.dart
+
 import 'package:flutter/material.dart';
+import 'package:mendomarket/core/app_colors.dart';
 
 class HomeSearchBar extends StatelessWidget {
   final TextEditingController controller;
-  final Function(String)? onChanged;
-  final VoidCallback? onSearchSubmitted; // Nuevo callback para cuando se envía la búsqueda
+  final ValueChanged<String>? onSearchSubmitted;
+  final ValueChanged<String>? onChanged;
 
   const HomeSearchBar({
     super.key,
     required this.controller,
+    this.onSearchSubmitted,
     this.onChanged,
-    this.onSearchSubmitted, // Lo agregamos al constructor
   });
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(12),
-      child: Container(
-        decoration: BoxDecoration(
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.08),
-              blurRadius: 12,
-              offset: const Offset(0, 4),
-            ),
-          ],
+    return TextField(
+      controller: controller,
+      decoration: InputDecoration(
+        hintText: 'Buscar productos...',
+        prefixIcon: Icon(Icons.search, color: AppColors.primaryColor),
+        suffixIcon: controller.text.isNotEmpty
+            ? IconButton(
+                icon: const Icon(Icons.clear, color: Colors.grey),
+                onPressed: () {
+                  controller.clear();
+                  if (onChanged != null) {
+                    onChanged!('');
+                  }
+                },
+              )
+            : null,
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(30),
+          borderSide: BorderSide.none,
         ),
-        child: TextField(
-          controller: controller,
-          onChanged: onChanged,
-          onSubmitted: (value) { 
-            if (onSearchSubmitted != null) {
-              onSearchSubmitted!();
-            }
-          },
-          decoration: InputDecoration(
-            hintText: "Buscar productos",
-            prefixIcon: const Icon(Icons.search, color: Colors.black),
-            filled: true,
-            fillColor: const Color.fromARGB(68, 84, 131, 98),
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(20),
-              borderSide: BorderSide.none,
-            ),
-            contentPadding: const EdgeInsets.symmetric(
-              vertical: 10,
-              horizontal: 14,
-            ),
-          ),
-        ),
+        filled: true,
+        fillColor: Colors.grey[200],
+        contentPadding: const EdgeInsets.symmetric(vertical: 0, horizontal: 10),
       ),
+      onSubmitted: (value) {
+        if (onSearchSubmitted != null) {
+          onSearchSubmitted!(value);
+        }
+      },
+      onChanged: (value) {
+        if (onChanged != null) {
+          onChanged!(value);
+        }
+      },
     );
   }
 }

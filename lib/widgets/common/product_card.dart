@@ -1,24 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:mendomarket/core/app_colors.dart';
+import 'package:mendomarket/features/product_details/product_details_page.dart';
+import 'package:mendomarket/models/product.dart';
 
 class ProductCard extends StatelessWidget {
-  final String title;
-  final String price;
-  final String location;
-  final String image;
+  final Product product;
 
   const ProductCard({
     super.key,
-    required this.title,
-    required this.price,
-    required this.location,
-    required this.image,
+    required this.product,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 170,
       margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
       decoration: BoxDecoration(
         color: AppColors.productCard,
@@ -34,78 +29,93 @@ class ProductCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Imagen + icono
-          Stack(
-            children: [
-              ClipRRect(
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(20),
-                  topRight: Radius.circular(20),
-                ),
-                child: Image.asset(
-                  image,
-                  height: 120,
-                  width: double.infinity,
-                  fit: BoxFit.cover,
-                ),
-              ),
-              Positioned(
-                top: 8,
-                right: 8,
-                child: Container(
-                  decoration: const BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Colors.white,
+          // Product image
+          ClipRRect(
+            borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(20),
+              topRight: Radius.circular(20),
+            ),
+            child: Image.asset(
+              product.imageUrl,
+              height: 100, // Fixed height for the image
+              width: double.infinity,
+              fit: BoxFit.cover,
+              errorBuilder: (context, error, stackTrace) {
+                return Container(
+                  height: 100,
+                  color: Colors.grey[300],
+                  child: const Center(
+                    child: Icon(
+                      Icons.broken_image,
+                      color: Colors.grey,
+                      size: 50,
+                    ),
                   ),
-                  child: Icon(
-                    Icons.favorite_border,
-                    color: Colors.grey.shade700,
-                  ),
-                ),
-              ),
-            ],
+                );
+              },
+            ),
           ),
-
-          // Texto
+          // Product details
           Padding(
             padding: const EdgeInsets.all(10),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(title,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.w600,
-                      fontSize: 14,
-                      color: Colors.black,
-                    )),
+                Text(
+                  product.title,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.w600,
+                    fontSize: 14,
+                    color: Colors.black,
+                  ),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
                 const SizedBox(height: 4),
-                Text('\$ $price',
-                    style: TextStyle(
-                      color: AppColors.primaryColor,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 14,
-                    )),
+                Text(
+                  '\$ ${product.price}',
+                  style: TextStyle(
+                    color: AppColors.primaryColor,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 14,
+                  ),
+                ),
                 const SizedBox(height: 2),
-                Text(location,
-                    style: const TextStyle(
-                      color: Colors.black45,
-                      fontSize: 12,
-                    )),
+                Text(
+                  product.location,
+                  style: const TextStyle(
+                    color: Colors.black45,
+                    fontSize: 12,
+                  ),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
                 const SizedBox(height: 6),
                 Row(
-                  children: const [
-                    Icon(Icons.star, color: Colors.amber, size: 16),
-                    Icon(Icons.star, color: Colors.amber, size: 16),
-                    Icon(Icons.star, color: Colors.amber, size: 16),
-                    Icon(Icons.star, color: Colors.amber, size: 16),
-                    Icon(Icons.star_half, color: Colors.amber, size: 16),
-                  ],
+                  children: List.generate(5, (index) {
+                    return Icon(
+                      index < product.rating.floor()
+                          ? Icons.star
+                          : index < product.rating
+                              ? Icons.star_half
+                              : Icons.star_border,
+                      color: Colors.amber,
+                      size: 16,
+                    );
+                  }),
                 ),
                 const SizedBox(height: 6),
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ProductDetailsPage(product: product),
+                        ),
+                      );
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color.fromARGB(134, 74, 124, 89),
                       shape: RoundedRectangleBorder(
@@ -113,12 +123,14 @@ class ProductCard extends StatelessWidget {
                       elevation: 0,
                       padding: const EdgeInsets.symmetric(vertical: 8),
                     ),
-                    child: const Text("Ver detalles",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 13,
-                          fontWeight: FontWeight.bold,
-                        )),
+                    child: const Text(
+                      "View details",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 13,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   ),
                 ),
               ],

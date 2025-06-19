@@ -78,11 +78,7 @@ flutter:
     - assets/images/onboarding/onboarding03.png
     - assets/images/onboarding/underConstruction.png
   # product images
-    - assets/images/products/product3d.png
-    - assets/images/products/gorra.png
-    - assets/images/products/tazaSublimada.png
-    - assets/images/products/remeraSublimada.png
-    - assets/images/products/mate3d.png
+    - assets/images/products/
 
   # banner images
     - assets/images/banners/banner.png

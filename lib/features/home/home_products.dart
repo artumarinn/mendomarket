@@ -1,50 +1,37 @@
 import 'package:flutter/material.dart';
-import 'package:mendomarket/core/app_colors.dart';
+import 'package:mendomarket/models/product.dart';
 import 'package:mendomarket/widgets/common/product_card.dart';
-import 'package:mendomarket/widgets/common/products_tags.dart';
-import 'package:mendomarket/data/product_data.dart'; 
 
 class HomeProducts extends StatelessWidget {
-  const HomeProducts({super.key});
+  final String title;
+  final List<Product> products;
+
+  const HomeProducts({
+    super.key,
+    required this.title,
+    required this.products,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        // Título
-        Container(
-          width: double.infinity,
-          alignment: Alignment.topLeft,
-          padding: const EdgeInsets.only(left: 16, bottom: 10, top: 10),
-          child: Text(
-            "Productos",
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-              color: AppColors.primaryColor,
-            ),
-          ),
-        ),
-        // Filtros
-        const ProductsTags(),
-
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10),
-          child: Wrap(
-            alignment: WrapAlignment.start,
-            spacing: 10,
-            runSpacing: 10,
-            children: allProducts 
-                .map((product) => ProductCard(
-                      title: product.title,
-                      price: product.price,
-                      location: product.location,
-                      image: product.image,
-                    ))
-                .toList(),
-          ),
-        ),
-      ],
+    // Display a message if no products are available.
+    if (products.isEmpty) {
+      return const Center(child: Text('No products to display'));
+    }
+    return GridView.builder(
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      padding: const EdgeInsets.symmetric(vertical: 10),
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2, // Displays 2 products per row.
+        childAspectRatio: 0.7, // Adjusts the aspect ratio of each product card.
+        crossAxisSpacing: 10,
+        mainAxisSpacing: 10,
+      ),
+      itemCount: products.length,
+      itemBuilder: (context, index) {
+        return ProductCard(product: products[index]);
+      },
     );
   }
 }
