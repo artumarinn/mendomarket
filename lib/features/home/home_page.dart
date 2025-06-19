@@ -5,6 +5,7 @@ import 'package:mendomarket/features/home/home_products.dart';
 import 'package:mendomarket/features/home/home_search_bar.dart';
 import 'package:mendomarket/widgets/common/custom_app_bar.dart';
 import 'package:mendomarket/widgets/common/custom_nav_bar.dart';
+import 'package:mendomarket/features/search/search_page.dart'; // Importa la SearchPage
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -15,11 +16,32 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
+  final TextEditingController _searchController = TextEditingController();
 
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
     });
+  }
+
+  void _onSearchSubmittedFromHome() {
+    // Cuando el usuario envía la búsqueda desde el Home
+    final searchText = _searchController.text;
+    if (searchText.isNotEmpty) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => SearchPage(initialSearchQuery: searchText), // Pasa el texto de búsqueda
+        ),
+      );
+      _searchController.clear(); // Opcional: limpia la barra de búsqueda después de navegar
+    }
+  }
+
+  @override
+  void dispose() {
+    _searchController.dispose();
+    super.dispose();
   }
 
   @override
@@ -39,7 +61,10 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Column(
         children: [
-          const HomeSearchBar(), 
+          HomeSearchBar(
+            controller: _searchController,
+            onSearchSubmitted: _onSearchSubmittedFromHome, // Asigna el callback
+          ),
           Expanded(
             child: SingleChildScrollView(
               padding: const EdgeInsets.symmetric(horizontal: 10),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mendomarket/core/app_colors.dart';
 
 class HomeBanner extends StatelessWidget {
   const HomeBanner({super.key});
@@ -7,18 +6,21 @@ class HomeBanner extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 10, bottom: 10, right: 12, left: 12),
+      padding: const EdgeInsets.only(top: 10, bottom: 10, right: 10, left: 10),
       child: Container(
+        width: double.infinity, 
+        height: 130, 
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
-          gradient: const LinearGradient(
-            colors: [AppColors.primaryColor, Color.fromARGB(169, 84, 131, 98)],
-          ),
-          color: AppColors.primaryColor,
         ),
-        width: double.infinity,
-        height: 120,
+        child: ClipRRect( 
+          borderRadius: BorderRadius.circular(20),
+          child: Image.asset(
+            'assets/images/banners/banner.png', 
+            fit: BoxFit.cover, 
+          ),
+        ),
       ),
-    ); 
+    );
   }
 }
