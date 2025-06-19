@@ -37,7 +37,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
       body: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.only(top: 40, left: 250),
+            padding: const EdgeInsets.only(top: 60, left: 300),
             child: GestureDetector(
               onTap: () {
                 Navigator.pushReplacementNamed(context, '/login');

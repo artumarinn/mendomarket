@@ -15,4 +15,7 @@ class AppColors {
   // background colors
   static const backgroundColor = Color(0xFFffffff);
 
+  // product card color
+  static const productCard = Color(0xFFD9D9D9);
+
 }

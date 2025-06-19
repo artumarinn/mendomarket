@@ -31,13 +31,30 @@ class _HomePageState extends State<HomePage> {
           Padding(
             padding: const EdgeInsets.only(right: 12),
             child: IconButton(
-              icon: const Icon(Icons.notifications, color: Colors.white), 
+              icon: const Icon(Icons.notifications, color: Colors.white),
               onPressed: () {},
             ),
           ),
         ],
       ),
-      body: const Column(children: [HomeSearchBar(), HomeCategories(), HomeProducts()]), 
+      body: Column(
+        children: [
+          const HomeSearchBar(), 
+          Expanded(
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: const [
+                  HomeBanner(),
+                  HomeCategories(),
+                  HomeProducts(),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
       bottomNavigationBar: CustomNavBar(
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
