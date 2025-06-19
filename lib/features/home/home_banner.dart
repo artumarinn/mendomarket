@@ -11,10 +11,10 @@ class HomeBanner extends StatelessWidget {
         width: double.infinity, 
         height: 130, 
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(15),
         ),
         child: ClipRRect( 
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(15),
           child: Image.asset(
             'assets/images/banners/banner.png', 
             fit: BoxFit.cover, 

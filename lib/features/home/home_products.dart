@@ -16,15 +16,15 @@ class HomeProducts extends StatelessWidget {
   Widget build(BuildContext context) {
     // Display a message if no products are available.
     if (products.isEmpty) {
-      return const Center(child: Text('No products to display'));
+      return const Center(child: Text('No hay productos para mostrar'));
     }
     return GridView.builder(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
       padding: const EdgeInsets.symmetric(vertical: 10),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2, // Displays 2 products per row.
-        childAspectRatio: 0.7, // Adjusts the aspect ratio of each product card.
+        crossAxisCount: 2, 
+        childAspectRatio: 0.7, 
         crossAxisSpacing: 10,
         mainAxisSpacing: 10,
       ),

@@ -124,7 +124,7 @@ class ProductCard extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(vertical: 8),
                     ),
                     child: const Text(
-                      "View details",
+                      "Ver detalles",
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 13,

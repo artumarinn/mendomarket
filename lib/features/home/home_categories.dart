@@ -17,7 +17,7 @@ class HomeCategories extends StatelessWidget {
           padding: const EdgeInsets.only(left: 16, bottom: 10),
           child: Text(
             "Categorías",
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: AppColors.primaryColor),
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: AppColors.primaryColor),
           ),
         ),
         Row(

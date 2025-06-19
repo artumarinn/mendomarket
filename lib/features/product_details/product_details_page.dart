@@ -97,7 +97,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                   ),
                   const SizedBox(height: 20),
                   const Text(
-                    'Description:',
+                    'Descripción:',
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
@@ -114,7 +114,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                   ),
                   const SizedBox(height: 20),
                   const Text(
-                    'Seller Information:',
+                    'Información del vendedor:',
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
@@ -136,12 +136,12 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                     child: ElevatedButton.icon(
                       onPressed: () {
                         ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(content: Text('Contacting seller')),
+                          const SnackBar(content: Text('Contactar vendedor')),
                         );
                       },
                       icon: const Icon(Icons.message, color: Colors.white),
                       label: const Text(
-                        'Contact Seller',
+                        'Contactar vendedor',
                         style: TextStyle(fontSize: 18, color: Colors.white),
                       ),
                       style: ElevatedButton.styleFrom(

@@ -1,5 +1,3 @@
-// lib/features/home/home_search_bar.dart
-
 import 'package:flutter/material.dart';
 import 'package:mendomarket/core/app_colors.dart';
 

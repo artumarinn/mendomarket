@@ -68,7 +68,7 @@ class _SearchPageState extends State<SearchPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: 'Search'),
+      appBar: CustomAppBar(title: 'Buscar'),
       body: Column(
         children: [
           Padding(
@@ -82,7 +82,7 @@ class _SearchPageState extends State<SearchPage> {
           Expanded(
             child: _searchResults.isEmpty && _searchController.text.isNotEmpty
                 ? const Center(
-                    child: Text('No products found for this search.'),
+                    child: Text('No se encuentran productos.'),
                   )
                 : _searchResults.isEmpty && _searchController.text.isEmpty
                     ? const Center(

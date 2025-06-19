@@ -1,6 +1,3 @@
-// lib/models/product.dart
-import 'package:flutter/material.dart';
-
 class Product {
   final String id;
   final String title;
@@ -18,7 +15,7 @@ class Product {
     required this.location,
     required this.imageUrl,
     this.rating = 0.0,
-    this.description = 'No description available for this product.',
+    this.description = 'Este producto no tiene descripcion.',
     this.sellerInfo = 'Unknown Seller',
   });
 
