@@ -15,40 +15,43 @@ class HomeSearchBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
-      controller: controller,
-      decoration: InputDecoration(
-        hintText: 'Buscar productos...',
-        prefixIcon: Icon(Icons.search, color: AppColors.primaryColor),
-        suffixIcon: controller.text.isNotEmpty
-            ? IconButton(
-                icon: const Icon(Icons.clear, color: Colors.grey),
-                onPressed: () {
-                  controller.clear();
-                  if (onChanged != null) {
-                    onChanged!('');
-                  }
-                },
-              )
-            : null,
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(30),
-          borderSide: BorderSide.none,
+    return Padding(
+      padding: const EdgeInsets.only(top: 10, left: 16, right: 16),
+      child: TextField(
+        controller: controller,
+        decoration: InputDecoration(
+          hintText: 'Buscar productos...',
+          prefixIcon: Icon(Icons.search, color: AppColors.primaryColor),
+          suffixIcon: controller.text.isNotEmpty
+              ? IconButton(
+                  icon: const Icon(Icons.clear, color: Colors.grey),
+                  onPressed: () {
+                    controller.clear();
+                    if (onChanged != null) {
+                      onChanged!('');
+                    }
+                  },
+                )
+              : null,
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(30),
+            borderSide: BorderSide.none,
+          ),
+          filled: true,
+          fillColor: Colors.grey[200],
+          contentPadding: const EdgeInsets.symmetric(vertical: 0, horizontal: 10),
         ),
-        filled: true,
-        fillColor: Colors.grey[200],
-        contentPadding: const EdgeInsets.symmetric(vertical: 0, horizontal: 10),
+        onSubmitted: (value) {
+          if (onSearchSubmitted != null) {
+            onSearchSubmitted!(value);
+          }
+        },
+        onChanged: (value) {
+          if (onChanged != null) {
+            onChanged!(value);
+          }
+        },
       ),
-      onSubmitted: (value) {
-        if (onSearchSubmitted != null) {
-          onSearchSubmitted!(value);
-        }
-      },
-      onChanged: (value) {
-        if (onChanged != null) {
-          onChanged!(value);
-        }
-      },
     );
   }
 }

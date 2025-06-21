@@ -5,10 +5,14 @@ import 'package:mendomarket/models/product.dart';
 
 class ProductCard extends StatelessWidget {
   final Product product;
+  final bool isFavorite;
+  final VoidCallback onFavoriteToggle;
 
   const ProductCard({
     super.key,
     required this.product,
+    required this.isFavorite,
+    required this.onFavoriteToggle,
   });
 
   @override
@@ -26,114 +30,131 @@ class ProductCard extends StatelessWidget {
           ),
         ],
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      child: Stack(
         children: [
-          // Product image
-          ClipRRect(
-            borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(20),
-              topRight: Radius.circular(20),
-            ),
-            child: Image.asset(
-              product.imageUrl,
-              height: 100, // Fixed height for the image
-              width: double.infinity,
-              fit: BoxFit.cover,
-              errorBuilder: (context, error, stackTrace) {
-                return Container(
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              ClipRRect(
+                borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(20),
+                  topRight: Radius.circular(20),
+                ),
+                child: Image.asset(
+                  product.imageUrl,
                   height: 100,
-                  color: Colors.grey[300],
-                  child: const Center(
-                    child: Icon(
-                      Icons.broken_image,
-                      color: Colors.grey,
-                      size: 50,
-                    ),
-                  ),
-                );
-              },
-            ),
-          ),
-          // Product details
-          Padding(
-            padding: const EdgeInsets.all(10),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  product.title,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.w600,
-                    fontSize: 14,
-                    color: Colors.black,
-                  ),
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                ),
-                const SizedBox(height: 4),
-                Text(
-                  '\$ ${product.price}',
-                  style: TextStyle(
-                    color: AppColors.primaryColor,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 14,
-                  ),
-                ),
-                const SizedBox(height: 2),
-                Text(
-                  product.location,
-                  style: const TextStyle(
-                    color: Colors.black45,
-                    fontSize: 12,
-                  ),
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                ),
-                const SizedBox(height: 6),
-                Row(
-                  children: List.generate(5, (index) {
-                    return Icon(
-                      index < product.rating.floor()
-                          ? Icons.star
-                          : index < product.rating
-                              ? Icons.star_half
-                              : Icons.star_border,
-                      color: Colors.amber,
-                      size: 16,
-                    );
-                  }),
-                ),
-                const SizedBox(height: 6),
-                SizedBox(
                   width: double.infinity,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => ProductDetailsPage(product: product),
+                  fit: BoxFit.cover,
+                  errorBuilder: (context, error, stackTrace) {
+                    return Container(
+                      height: 100,
+                      color: Colors.grey[300],
+                      child: const Center(
+                        child: Icon(
+                          Icons.broken_image,
+                          color: Colors.grey,
+                          size: 50,
                         ),
-                      );
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color.fromARGB(134, 74, 124, 89),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10)),
-                      elevation: 0,
-                      padding: const EdgeInsets.symmetric(vertical: 8),
+                      ),
+                    );
+                  },
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(10),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      product.title,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.w600,
+                        fontSize: 14,
+                        color: Colors.black,
+                      ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
                     ),
-                    child: const Text(
-                      "Ver detalles",
+                    const SizedBox(height: 4),
+                    Text(
+                      '\$ ${product.price}',
                       style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 13,
+                        color: AppColors.primaryColor,
                         fontWeight: FontWeight.bold,
+                        fontSize: 14,
                       ),
                     ),
-                  ),
+                    const SizedBox(height: 2),
+                    Text(
+                      product.location,
+                      style: const TextStyle(
+                        color: Colors.black45,
+                        fontSize: 12,
+                      ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    const SizedBox(height: 6),
+                    Row(
+                      children: List.generate(5, (index) {
+                        return Icon(
+                          index < product.rating.floor()
+                              ? Icons.star
+                              : index < product.rating
+                                  ? Icons.star_half
+                                  : Icons.star_border,
+                          color: Colors.amber,
+                          size: 16,
+                        );
+                      }),
+                    ),
+                    const SizedBox(height: 6),
+                    SizedBox(
+                      width: double.infinity,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ProductDetailsPage(product: product),
+                            ),
+                          );
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: const Color.fromARGB(134, 74, 124, 89),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10)),
+                          elevation: 0,
+                          padding: const EdgeInsets.symmetric(vertical: 8),
+                        ),
+                        child: const Text(
+                          "Ver detalles",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 13,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-              ],
+              ),
+            ],
+          ),
+          // Botón de favorito
+          Positioned(
+            top: 8,
+            right: 8,
+            child: GestureDetector(
+              onTap: onFavoriteToggle,
+              child: CircleAvatar(
+                backgroundColor: Colors.white,
+                child: Icon(
+                  Icons.favorite,
+                  color: isFavorite ? AppColors.primaryColor : Colors.grey,
+                ),
+              ),
             ),
           ),
         ],

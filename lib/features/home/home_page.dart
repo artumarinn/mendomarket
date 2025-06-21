@@ -22,7 +22,8 @@ class _HomePageState extends State<HomePage> {
   final filters = ['Todo', 'Recientes', 'Destacado'];
   final TextEditingController _searchController = TextEditingController();
 
-  /// Returns a list of products based on the currently selected filter.
+  Set<String> favoriteProductIds = {};
+
   List<Product> getFilteredProducts() {
     switch (selectedFilter) {
       case 1:
@@ -34,13 +35,22 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
+  void _toggleFavorite(Product product) {
+    setState(() {
+      if (favoriteProductIds.contains(product.id)) {
+        favoriteProductIds.remove(product.id);
+      } else {
+        favoriteProductIds.add(product.id);
+      }
+    });
+  }
+
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
     });
   }
 
-  /// Handles search submission from the home page, navigating to the search results.
   void _onSearchSubmittedFromHome() {
     final searchText = _searchController.text;
     if (searchText.isNotEmpty) {
@@ -112,20 +122,18 @@ class _HomePageState extends State<HomePage> {
                                 vertical: 8,
                               ),
                               decoration: BoxDecoration(
-                                color:
-                                    isSelected
-                                        ? const Color(0xFFE9C46A)
-                                        : const Color(0xFFF9F4ED),
+                                color: isSelected
+                                    ? const Color(0xFFE9C46A)
+                                    : const Color(0xFFF9F4ED),
                                 borderRadius: BorderRadius.circular(12),
-                                boxShadow:
-                                    isSelected
-                                        ? [
-                                          const BoxShadow(
-                                            color: Colors.black26,
-                                            blurRadius: 4,
-                                          ),
-                                        ]
-                                        : [],
+                                boxShadow: isSelected
+                                    ? [
+                                        const BoxShadow(
+                                          color: Colors.black26,
+                                          blurRadius: 4,
+                                        ),
+                                      ]
+                                    : [],
                               ),
                               child: Text(
                                 filters[index],
@@ -141,6 +149,8 @@ class _HomePageState extends State<HomePage> {
                   HomeProducts(
                     title: filters[selectedFilter],
                     products: filteredProducts,
+                    favoriteProductIds: favoriteProductIds,
+                    onFavoriteToggle: _toggleFavorite,
                   ),
                 ],
               ),

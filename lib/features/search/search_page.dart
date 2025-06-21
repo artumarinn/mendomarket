@@ -1,5 +1,3 @@
-// lib/features/search/search_page.dart
-
 import 'package:flutter/material.dart';
 import 'package:mendomarket/features/home/home_search_bar.dart';
 import 'package:mendomarket/widgets/common/custom_app_bar.dart';
@@ -21,6 +19,7 @@ class _SearchPageState extends State<SearchPage> {
   int _selectedIndex = 1;
   late TextEditingController _searchController;
   List<Product> _searchResults = [];
+  Set<String> favoriteProductIds = {};
 
   @override
   void initState() {
@@ -38,6 +37,16 @@ class _SearchPageState extends State<SearchPage> {
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
+    });
+  }
+
+  void _toggleFavorite(Product product) {
+    setState(() {
+      if (favoriteProductIds.contains(product.id)) {
+        favoriteProductIds.remove(product.id);
+      } else {
+        favoriteProductIds.add(product.id);
+      }
     });
   }
 
@@ -98,7 +107,12 @@ class _SearchPageState extends State<SearchPage> {
                         ),
                         itemCount: _searchResults.length,
                         itemBuilder: (context, index) {
-                          return ProductCard(product: _searchResults[index]);
+                          final product = _searchResults[index];
+                          return ProductCard(
+                            product: product,
+                            isFavorite: favoriteProductIds.contains(product.id),
+                            onFavoriteToggle: () => _toggleFavorite(product),
+                          );
                         },
                       ),
           ),
