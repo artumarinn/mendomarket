@@ -119,8 +119,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                 if (_currentIndex < onboardingData.length - 1) {
                   _pageController.nextPage(duration: const Duration(milliseconds: 300), curve: Curves.ease);
                 } else {
-                  // Ir al login
-                  Navigator.pushReplacementNamed(context, '/home');
+                  Navigator.pushReplacementNamed(context, '/login');
                 }
               },
               child: Text(

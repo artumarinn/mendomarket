@@ -23,6 +23,7 @@ class _FavoritePageState extends State<FavoritePage> {
     return Scaffold(
       appBar: CustomAppBar(
         title: 'Favoritos',
+        centerTitle: true,
       ),
       bottomNavigationBar: CustomNavBar(
         currentIndex: _selectedIndex,

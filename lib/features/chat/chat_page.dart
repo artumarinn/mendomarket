@@ -22,18 +22,16 @@ class _ChatPageState extends State<ChatPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(
-        title: 'Chat', 
-      ),
+      appBar: CustomAppBar(title: 'Chat', centerTitle: true),
       bottomNavigationBar: CustomNavBar(
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
       ),
-      body: const UnderConstructionPage( 
-        imagePath: 'assets/images/onboarding/underConstruction.png', 
+      body: const UnderConstructionPage(
+        imagePath: 'assets/images/onboarding/underConstruction.png',
         message: '¡Estamos trabajando en la sección de chat!',
         subMessage: 'Vuelve pronto para ver las novedades.',
-        title: 'Chat', 
+        title: 'Chat',
       ),
     );
   }

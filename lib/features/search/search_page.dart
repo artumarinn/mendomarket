@@ -68,7 +68,7 @@ class _SearchPageState extends State<SearchPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: 'Buscar'),
+      appBar: CustomAppBar(title: 'Buscar', centerTitle: true),
       body: Column(
         children: [
           Padding(

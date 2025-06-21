@@ -73,15 +73,13 @@ flutter:
   assets:
   
   # onboarding images
-    - assets/images/onboarding/onboarding01.png
-    - assets/images/onboarding/onboarding02.png
-    - assets/images/onboarding/onboarding03.png
-    - assets/images/onboarding/underConstruction.png
+    - assets/images/onboarding/
   # product images
     - assets/images/products/
-
   # banner images
     - assets/images/banners/banner.png
+  # icons images
+    - assets/images/icons/
 
     
   # To add assets to your application, add an assets section, like this:

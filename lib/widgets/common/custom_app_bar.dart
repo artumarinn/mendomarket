@@ -8,7 +8,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar({
     super.key, // <-- ¡Aquí estaba la corrección principal! Se usa 'super.key' para simplificar.
     required this.title,
-    this.actions,
+    this.actions, required bool centerTitle,
   });
 
   @override

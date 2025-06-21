@@ -4,6 +4,7 @@ import 'package:mendomarket/features/favorite/favorite_page.dart';
 import 'package:mendomarket/features/login/login_page.dart';
 import 'package:mendomarket/features/onboarding/onboarding.dart';
 import 'package:mendomarket/features/profile/profile_page.dart';
+import 'package:mendomarket/features/register/register_page.dart';
 import 'package:mendomarket/features/search/search_page.dart';
 import 'features/home/home_page.dart';
 
@@ -27,12 +28,13 @@ class MyApp extends StatelessWidget {
         '/favorite': (context) => const FavoritePage(),
         '/profile': (context) => const ProfilePage(),
         '/login': (context) => const LoginPage(),
+        '/register': (context) => const RegisterPage(),
       },
       theme: ThemeData(
         primarySwatch: Colors.green,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: HomePage(), // This `home` property will be overridden by `initialRoute`
+      home: HomePage(), 
     );
   }
 }

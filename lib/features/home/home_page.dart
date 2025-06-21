@@ -67,6 +67,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: CustomAppBar(
         title: "MendoMarket",
+        centerTitle: true,
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 12),
@@ -106,13 +107,25 @@ class _HomePageState extends State<HomePage> {
                               });
                             },
                             child: Container(
-                              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 16,
+                                vertical: 8,
+                              ),
                               decoration: BoxDecoration(
-                                color: isSelected ? const Color(0xFFE9C46A) : const Color(0xFFF9F4ED),
+                                color:
+                                    isSelected
+                                        ? const Color(0xFFE9C46A)
+                                        : const Color(0xFFF9F4ED),
                                 borderRadius: BorderRadius.circular(12),
-                                boxShadow: isSelected
-                                    ? [const BoxShadow(color: Colors.black26, blurRadius: 4)]
-                                    : [],
+                                boxShadow:
+                                    isSelected
+                                        ? [
+                                          const BoxShadow(
+                                            color: Colors.black26,
+                                            blurRadius: 4,
+                                          ),
+                                        ]
+                                        : [],
                               ),
                               child: Text(
                                 filters[index],
