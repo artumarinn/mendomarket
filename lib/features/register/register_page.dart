@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mendomarket/core/app_colors.dart';
 import 'package:mendomarket/features/home/home_page.dart';
-import 'package:mendomarket/features/login/login_page.dart';
 import 'package:mendomarket/widgets/common/custom_app_bar.dart';
 
 class RegisterPage extends StatefulWidget {
