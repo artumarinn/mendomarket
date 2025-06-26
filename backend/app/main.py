@@ -2,8 +2,10 @@ from fastapi import FastAPI, Depends
 from sqlalchemy.orm import Session
 from sqlalchemy import text
 from .database import Base, engine, SessionLocal
+from backend.app.api import user_routes
 
 app = FastAPI()
+app.include_router(user_routes.router)
 
 Base.metadata.create_all(bind=engine)
 

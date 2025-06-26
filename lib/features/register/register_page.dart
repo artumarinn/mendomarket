@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:mendomarket/core/app_colors.dart';
+import 'package:mendomarket/core/services/auth_service.dart';
 import 'package:mendomarket/features/home/home_page.dart';
 import 'package:mendomarket/widgets/common/custom_app_bar.dart';
+import 'package:mendomarket/widgets/common/google_button.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -11,23 +13,30 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
+  final TextEditingController _nameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _confirmPasswordController = TextEditingController();
   final home = HomePage();
   @override
   void dispose() {
+    _nameController.dispose();
     _emailController.dispose();
     _passwordController.dispose();
     _confirmPasswordController.dispose();
     super.dispose();
   }
 
-  void _register() {
+    void _loginWithGoogle() {
+    // lógica de register con Google
+    print('Login con Google');
+  }
+
+  Future<void> _register() async {
+    final name = _nameController.text;
     final email = _emailController.text;
     final password = _passwordController.text;
     final confirmPassword = _confirmPasswordController.text;
-    Navigator.pushReplacementNamed(context,'/home');
 
     if (password != confirmPassword) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -35,8 +44,15 @@ class _RegisterPageState extends State<RegisterPage> {
       );
       return;
     }
-    // TODO: Lógica de registro real
-    print('Registro con $email y $password');
+
+    final success = await registerUser(name, email, password);
+    if (success) {
+      Navigator.pushReplacementNamed(context, '/home');
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Error al registrar usuario')),
+      );
+    }
   }
 
   void _goToLogin() {
@@ -67,6 +83,16 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
               ),
               const SizedBox(height: 32),
+              TextField(
+                controller: _nameController,
+                decoration: const InputDecoration(
+                  labelText: "Nombre",
+                  border: OutlineInputBorder(),
+                  prefixIcon: Icon(Icons.person),
+                ),
+                keyboardType: TextInputType.text,
+              ),
+              const SizedBox(height: 16),
               TextField(
                 controller: _emailController,
                 decoration: const InputDecoration(
@@ -119,6 +145,8 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                 ),
               ),
+              const SizedBox(height: 12),
+              GoogleSignInButton(onPressed: _loginWithGoogle),
               const SizedBox(height: 16),
               TextButton(
                 onPressed: _goToLogin,
