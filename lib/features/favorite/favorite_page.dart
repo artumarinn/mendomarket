@@ -14,7 +14,7 @@ class FavoritePage extends StatefulWidget {
 
 class _FavoritePageState extends State<FavoritePage> {
   int _selectedIndex = 3;
-  Set<String> favoriteProductIds = {}; // Puedes pasarla desde un gestor de estado global
+  Set<String> favoriteProductIds = {}; 
 
   void _onItemTapped(int index) {
     setState(() {

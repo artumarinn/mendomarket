@@ -95,7 +95,7 @@ class _SearchPageState extends State<SearchPage> {
                   )
                 : _searchResults.isEmpty && _searchController.text.isEmpty
                     ? const Center(
-                        child: Text('Start typing to search for products...'),
+                        child: Text('Empiece a escribir para buscar productos...'),
                       )
                     : GridView.builder(
                         padding: const EdgeInsets.all(10.0),

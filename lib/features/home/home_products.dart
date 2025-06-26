@@ -27,7 +27,7 @@ class HomeProducts extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 10),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
-        childAspectRatio: 0.7,
+        childAspectRatio: 0.67,
         crossAxisSpacing: 10,
         mainAxisSpacing: 10,
       ),
