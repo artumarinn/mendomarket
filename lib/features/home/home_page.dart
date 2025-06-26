@@ -4,6 +4,7 @@ import 'package:mendomarket/features/home/home_banner.dart';
 import 'package:mendomarket/features/home/home_categories.dart';
 import 'package:mendomarket/features/home/home_products.dart';
 import 'package:mendomarket/features/home/home_search_bar.dart';
+import 'package:mendomarket/features/notifications/notifications_page.dart';
 import 'package:mendomarket/widgets/common/custom_app_bar.dart';
 import 'package:mendomarket/widgets/common/custom_nav_bar.dart';
 import 'package:mendomarket/features/search/search_page.dart';
@@ -83,7 +84,12 @@ class _HomePageState extends State<HomePage> {
             padding: const EdgeInsets.only(right: 12),
             child: IconButton(
               icon: const Icon(Icons.notifications, color: Colors.white),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const NotificationsPage()),
+                );
+              },
             ),
           ),
         ],

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mendomarket/features/chat/chat_page.dart';
 import 'package:mendomarket/features/favorite/favorite_page.dart';
 import 'package:mendomarket/features/login/login_page.dart';
+import 'package:mendomarket/features/notifications/notifications_page.dart';
 import 'package:mendomarket/features/onboarding/onboarding.dart';
 import 'package:mendomarket/features/profile/profile_page.dart';
 import 'package:mendomarket/features/register/register_page.dart';
@@ -29,6 +30,7 @@ class MyApp extends StatelessWidget {
         '/profile': (context) => const ProfilePage(),
         '/login': (context) => const LoginPage(),
         '/register': (context) => const RegisterPage(),
+        '/notifications': (context) => const NotificationsPage(),
       },
       theme: ThemeData(
         primarySwatch: Colors.green,
