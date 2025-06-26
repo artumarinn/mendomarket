@@ -78,7 +78,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: CustomAppBar(
         title: "MendoMarket",
-        centerTitle: true,
+        centerTitle: false,
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 12),

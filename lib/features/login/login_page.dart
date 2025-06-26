@@ -52,7 +52,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: 'Login', centerTitle: true),
+      appBar: CustomAppBar(title: 'Login', centerTitle: true), 
       backgroundColor: AppColors.backgroundColor,
       body: Center(
         child: SingleChildScrollView(

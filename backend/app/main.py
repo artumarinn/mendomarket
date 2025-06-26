@@ -2,7 +2,7 @@ from fastapi import FastAPI, Depends
 from sqlalchemy.orm import Session
 from sqlalchemy import text
 from .database import Base, engine, SessionLocal
-from backend.app.api import user_routes
+from app.api import user_routes
 
 app = FastAPI()
 app.include_router(user_routes.router)
@@ -18,7 +18,7 @@ def get_db():
 
 @app.get("/")
 def read_root():
-    return {"message": "¡FastAPI y Postgres funcionando con Docker Compose!"}
+    return {"message": "FastAPI y Postgres funcionando con Docker Compose"}
 
 @app.get("/test-db")
 def test_db_connection(db: Session = Depends(get_db)):

@@ -4,11 +4,15 @@ import 'package:mendomarket/core/app_colors.dart';
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
   final List<Widget>? actions;
+  final bool showBack;
+  final bool centerTitle;
 
   const CustomAppBar({
-    super.key, 
+    super.key,
     required this.title,
-    this.actions, required bool centerTitle,
+    this.actions,
+    this.centerTitle = false,
+    this.showBack = false,
   });
 
   @override
@@ -17,6 +21,18 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      automaticallyImplyLeading: false, // Desactiva la flecha por defecto
+      leading: showBack
+          ? IconButton(
+              icon: Icon(
+                Icons.arrow_back_ios_new, 
+                color: Colors.white,      
+                size: 20,              
+              ),
+              onPressed: () => Navigator.of(context).maybePop(),
+            )
+          : null,
+      centerTitle: centerTitle,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
           bottomRight: Radius.circular(30),
@@ -32,7 +48,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             color: Colors.white,
             fontSize: 26,
             fontWeight: FontWeight.bold,
-            fontFamily: 'Poppins', 
+            fontFamily: 'Poppins',
           ),
         ),
       ),

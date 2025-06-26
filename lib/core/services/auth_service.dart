@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 Future<bool> registerUser(String name, String email, String password) async {
-  final url = Uri.parse('http://192.168.10.114:8000/register');
+  final url = Uri.parse('http://10.0.2.2:8000/register');
   try {
     final response = await http.post(
       url,
@@ -28,7 +28,7 @@ Future<bool> registerUser(String name, String email, String password) async {
 }
 
 Future<bool> loginUser(String email, String password) async {
-  final url = Uri.parse('http://192.168.10.114:8000/login'); 
+  final url = Uri.parse('http://10.0.2.2:8000/login'); 
   try {
     final response = await http.post(
       url,

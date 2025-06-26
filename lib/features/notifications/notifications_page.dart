@@ -8,7 +8,7 @@ class NotificationsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: 'Notificaciones', centerTitle: true),
+      appBar: CustomAppBar(showBack: true, title: 'Notificaciones', centerTitle: true),
       body: const UnderConstructionPage(
         imagePath: 'assets/images/onboarding/underConstruction.png',
         message: '¡Estamos trabajando en la sección de chat!',
